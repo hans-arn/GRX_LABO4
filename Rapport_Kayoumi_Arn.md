@@ -163,10 +163,6 @@ Dans l'application **Exécuter** lancer **wmimgmt.msc**. Puis dans le menu `Raci
 
 # Objectif 3 : Auto découverte d’un réseau 
 
-> Capturez le trafic (Wireshark) sur l’interface ens33 de gestion de votre VM Nagios.
-
-
-
 > Découvrez la topologie de votre réseau à l’aide de la fonction d’auto-découverte.
 
 Dans l'interface web on peut déjà vérifier que NAGIOS reconnaît toutes les machines grâce à l'auto discovery. Pour le réseau **192.168.1.0/24**.
@@ -187,11 +183,15 @@ Pour le réseau **192.168.2.0/24**.
 
 > A l’aide de la capture réalisée au point 7, expliquez la stratégie de découverte initiée par Nagios.
 
+Durant la phase de reconnaissance du réseau, ici le réseau 192.168.1.0/24, on peut voir qu'il y a pas mal de trafic TCP. Mais ces paquets contiennent assez peu d'informations. On peut tout de même noté que NAGIOS effectue des requêtes DNS sur les machines du réseau qui ont été découvertes. 
 
+![](img/Part3/10.jpg)
 
 > A l’aide de l’attribut « parent », hiérarchisez la carte topologique Hypermap.
 
+En allant dans dans la partie Hypermap, on peut voir le graphe du réseau générer automatiquement. Pour le modifier, il faut cliquer dans l'onglet `configuration > reconfigurer cet hôte ` Puis dans l'onglet `acceuil - Les Parents`.
 
+![](img/Part3/11.jpg)
 
 
 # Objectif 4 : Affinage de l’inventaire des nœuds cibles
