@@ -183,9 +183,17 @@ Pour le réseau **192.168.2.0/24**.
 
 > A l’aide de la capture réalisée au point 7, expliquez la stratégie de découverte initiée par Nagios.
 
-Durant la phase de reconnaissance du réseau, ici le réseau 192.168.1.0/24, on peut voir qu'il y a pas mal de trafic TCP. Mais ces paquets contiennent assez peu d'informations. On peut tout de même noté que NAGIOS effectue des requêtes DNS sur les machines du réseau qui ont été découvertes. 
+Tout d'abord NAGIOS effectue des requêtes ARP aléatoires sur toutes la plage d'adresse afin de voir les machines qui répondent.
 
 ![](img/Part3/10.jpg)
+
+Puis ensuite, avec des requêtes TCP SYN, NAGIOS teste les ports ouverts. en principe il teste les principaux ports.  
+
+![](img/Part3/10b.jpg)
+
+ensuite NAGIOS effectue plusieurs ping sur les machines découvertes sur différent port. Puis dans la finalité, NAGIOS regarde quel type de service fonctionne sur les différents port
+
+![](img/Part3/10c.jpg)
 
 > A l’aide de l’attribut « parent », hiérarchisez la carte topologique Hypermap.
 
