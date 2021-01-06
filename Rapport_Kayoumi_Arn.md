@@ -257,8 +257,6 @@ ntp server 192.168.232.2
 end
 ````
 
-
-
 ## Ubuntu SRV
 
 ### Syslog
@@ -333,9 +331,13 @@ En allant dans dans la partie Hypermap, on peut voir le graphe du réseau géné
 
 ### WMI
 
-
+Malheureusement nous n'arrivons pas à faire fonctionner le plugin WMI sur la machine Windows B. Sur conseil de M.Bron, nous faisons cette manipulations sur notre machine hôte. 
 
 ### NCPA
+
+Une fois l'agent NCPA installé sur la machine Windows B, on peut voir dans l'onglet ``Rapports` les valeurs des différents services surveiller.
+
+![](img/Part4/WinB/ncpa.png)
 
 ## Routeur
 
@@ -360,4 +362,10 @@ Pour monitorer les interfaces du routeur, nous utilisons le plugin **commutateur
 ### Syslog
 
 
+
+## Dashboard
+
+Voilà la vue de quelques unes de nos machine après avoir "tuner" notre tableau de bords.
+
+![](img/Part4/dash.PNG)
 
