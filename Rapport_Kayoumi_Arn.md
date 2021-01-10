@@ -361,7 +361,19 @@ Pour monitorer les interfaces du routeur, nous utilisons le plugin **commutateur
 
 ### Syslog
 
+Dans l'onglet **Configurer > Gestionnaire de configuration de base  > commandes** créer une commande afin d'exécuter la commande suivante :
 
+````sh
+/usr/local/nrdp/plugins/Generic/check_log -F /var/log/messages -0 /var/log/messages_ubuntu -q "ubuntulabs "
+````
+
+Puis dans **Configurer > Gestionnaire de configuration de base  > services ** créer un service qui va exécuter régulièrement cette commande. et on peut voir que le **service syslogs** apparaît dans les notifications.
+
+![](img/Part4/routeur/syslog.jpg)
+
+Mais malheureusement je n'ai pas réussi à faire en sorte que l'on voie les logs de manières détaillées. Sauf en faisant la commande dans le terminal.
+
+![](img/Part4/routeur/logs.jpg)
 
 ## Dashboard
 
