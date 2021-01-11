@@ -33,8 +33,6 @@ Et dans la capture ci-dessous on peut voir que l'on faire un ping sur le serveur
 
 ## Routeur 
 
-# TODO commentaires, une fois qu'on est sûr que les configurations fonctionnent
-
 ### SNMP + traps
 
 ````sh
@@ -51,211 +49,7 @@ logging 192.168.1.5 # envoi de syslog sur nagios
 
 ### Fichier de configuration résultant 
 
-````
-!
-! Last configuration change at 09:31:55 UTC Sat Dec 19 2020
-! NVRAM config last updated at 09:32:58 UTC Sat Dec 19 2020
-!
-version 12.4
-service timestamps debug uptime
-service timestamps log datetime msec
-no service password-encryption
-!
-hostname router
-!
-boot-start-marker
-boot-end-marker
-!
-!
-no aaa new-model
-memory-size iomem 5
-ip cef
-!
-#....
-!
-interface FastEthernet0/0
- ip address 192.168.1.1 255.255.255.0
- duplex auto
- speed auto
-!
-interface FastEthernet0/1
- ip address 192.168.2.1 255.255.255.0
- duplex auto
- speed auto
-!
-interface FastEthernet1/0
- ip address dhcp
- duplex auto
- speed auto
-!
-interface FastEthernet2/0
- no ip address
- shutdown
- duplex auto
- speed auto
-!
-ip forward-protocol nd
-!
-ip http server
-no ip http secure-server
-!
-logging 192.168.1.5
-access-list 1 permit 192.168.1.5
-snmp-server engineID local 123456789A
-snmp-server user jerome GRX v3 
-snmp-server group GRX v3 noauth access
-!
-! Last configuration change at 20:46:44 UTC Tue Dec 29 2020
-! NVRAM config last updated at 20:48:52 UTC Tue Dec 29 2020
-!
-version 12.4
-service timestamps debug uptime
-service timestamps log datetime msec
-no service password-encryption
-!
-hostname router
-!
-boot-start-marker
-boot-end-marker
-!
-!
-no aaa new-model
-memory-size iomem 5
-ip cef
-!
-!
-interface FastEthernet0/0
- ip address 192.168.1.1 255.255.255.0
- duplex auto
- speed auto
-!
-interface FastEthernet0/1
- ip address 192.168.2.1 255.255.255.0
- duplex auto
- speed auto
-!
-interface FastEthernet1/0
- ip address dhcp
- duplex auto
- speed auto
-!
-interface FastEthernet2/0
- no ip address
- shutdown
- duplex auto
- speed auto
-!
-ip forward-protocol nd
-!
-ip http server
-no ip http secure-server
-!
-logging 192.168.1.5
-access-list 1 permit 192.168.1.5
-snmp-server engineID local 123456789A
-snmp-server view ViewDefault iso included
-snmp-server community cisco RO
-snmp-server community ciscorw RW
-snmp-server contact jerome.arn@heig-vd.ch
-snmp-server enable traps snmp authentication linkdown linkup coldstart warmstart
-snmp-server enable traps vrrp
-snmp-server enable traps ds1
-snmp-server enable traps tty
-snmp-server enable traps eigrp
-snmp-server enable traps xgcp
-snmp-server enable traps flash insertion removal
-snmp-server enable traps ds3
-snmp-server enable traps envmon
-snmp-server enable traps icsudsu
-snmp-server enable traps isdn call-information
-snmp-server enable traps isdn layer2
-snmp-server enable traps isdn chan-not-avail
-snmp-server enable traps isdn ietf
-snmp-server enable traps ds0-busyout
-snmp-server enable traps ds1-loopback
-snmp-server enable traps atm subif
-snmp-server enable traps cnpd
-snmp-server enable traps config-copy
-snmp-server enable traps config
-snmp-server enable traps dial
-snmp-server enable traps dsp card-status
-snmp-server enable traps entity
-snmp-server enable traps event-manager
-snmp-server enable traps frame-relay
-snmp-server enable traps frame-relay subif
-snmp-server enable traps hsrp
-snmp-server enable traps ipmobile
-snmp-server enable traps ipmulticast
-snmp-server enable traps msdp
-snmp-server enable traps mvpn
-snmp-server enable traps ospf state-change
-snmp-server enable traps ospf errors
-snmp-server enable traps ospf retransmit
-snmp-server enable traps ospf lsa
-snmp-server enable traps ospf cisco-specific state-change nssa-trans-change
-snmp-server enable traps ospf cisco-specific state-change shamlink interface-old
-snmp-server enable traps ospf cisco-specific state-change shamlink neighbor
-snmp-server enable traps ospf cisco-specific errors
-snmp-server enable traps ospf cisco-specific retransmit
-snmp-server enable traps ospf cisco-specific lsa
-snmp-server enable traps pim neighbor-change rp-mapping-change invalid-pim-message
-snmp-server enable traps pppoe
-snmp-server enable traps cpu threshold
-snmp-server enable traps rsvp
-snmp-server enable traps rtr
-snmp-server enable traps syslog
-snmp-server enable traps l2tun session
-snmp-server enable traps vtp
-snmp-server enable traps voice poor-qov
-snmp-server enable traps voice fallback
-snmp-server enable traps dnis
-snmp-server host 192.168.1.5 version 2c public 
-!
-!
-control-plane
-!
-!
-line con 0
-line aux 0
-line vty 0 4
- login
-!
-ntp clock-period 17179880
-ntp master 7
-ntp server 46.165.252.57
-ntp server 84.16.73.33
-ntp server 5.148.175.134
-ntp server 192.168.232.2
-!
-end
- 1
-snmp-server group GRX v3 priv access 1
-snmp-server view ViewDefault iso included
-snmp-server contact jerome.arn@heig-vd.ch
-snmp-server enable traps snmp authentication linkdown linkup coldstart warmstart
-snmp-server enable traps vrrp
-#.... Liste de toutes les traps SNMP
-!
-!
-!
-control-plane
-!
-#....
-!
-line con 0
-line aux 0
-line vty 0 4
- login
-!
-ntp clock-period 17179872
-ntp master 7
-ntp server 46.165.252.57
-ntp server 84.16.73.33
-ntp server 5.148.175.134
-ntp server 192.168.232.2
-!
-end
-````
+Voir fichier en annexe.
 
 ## Ubuntu SRV
 
@@ -280,8 +74,6 @@ Pour cette partie nous avons repris la même configuration que dans le laboratoi
 Dans l'application **Exécuter** lancer **wmimgmt.msc**. Puis dans le menu `Racine de la console > Contrôle WMI(local)`   faites un clique droit `Propriété` et allez dans l'onglet `Sécurité` et sélectionné **WMI** puis appuyer sur le bouton `Sécurité` et ajouter l'utilisateur **labo** et lui ajouter toutes les autorisations. Puis ensuite faites un redémarrage de la machine. 
 
 ![](img/Part2/4_3.png)
-
-
 
 
 # Objectif 3 : Auto découverte d’un réseau 
@@ -331,7 +123,32 @@ En allant dans dans la partie Hypermap, on peut voir le graphe du réseau géné
 
 ### WMI
 
-Malheureusement nous n'arrivons pas à faire fonctionner le plugin WMI sur la machine Windows B. Sur conseil de M.Bron, nous faisons cette manipulations sur notre machine hôte. 
+#### Infrastructure virtualisée
+
+Nous avons en premier lieu essayer avec l'infrastructure virtualisée, mais nous obtenions une erreur lié a un timeout.
+
+Erreur:
+
+![](img/Part4/WinB/wmi.jpg)
+
+#### Machine hôte
+
+Sur conseil de M. Bron, nous avons donc essayé d'effectuer cette manipulation sur notre machine hôte. Après configuration de WMI sur notre machine hôte, nous obtenons une nouvelle erreur qui indique cette fois une erreur de connection.
+
+Erreur:
+
+![](img/Part4/wmi_host.png)
+
+Après investigation, nous sommes tombés sur plusieurs post/forum ou des personnes avaient le même problème que nous. Le problème serait lié à une version de Windows (Windows 10 2004) qui aurait "cassé" WMIC qui est utilisé par Nagios. En vérifiant la version de Windows que nous utilisons, nous avons  constaté que nous utilisons Windows 10 2004, qui est la version  problématique.
+
+![](img/Part4/about_windows.png)
+
+Source:
+
+* https://edcint.co.nz/checkwmiplus/forums/topic/wmic-stopped-working-on-windows-10-build-2004/
+* https://www.windowsphoneinfo.com/threads/wmic-stopped-working-on-windows-10-2004.454468/
+
+Nous n'avons donc pas pu effectué cetter manipulation.
 
 ### NCPA
 
@@ -380,4 +197,3 @@ Mais malheureusement je n'ai pas réussi à faire en sorte que l'on voie les log
 Voilà la vue de quelques unes de nos machine après avoir "tuner" notre tableau de bords.
 
 ![](img/Part4/dash.PNG)
-
