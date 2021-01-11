@@ -1,0 +1,153 @@
+
+!
+! Last configuration change at 20:46:44 UTC Tue Dec 29 2020
+! NVRAM config last updated at 20:48:52 UTC Tue Dec 29 2020
+!
+version 12.4
+service timestamps debug uptime
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname router
+!
+boot-start-marker
+boot-end-marker
+!
+!
+no aaa new-model
+memory-size iomem 5
+ip cef
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface FastEthernet0/0
+ ip address 192.168.1.1 255.255.255.0
+ duplex auto
+ speed auto
+!
+interface FastEthernet0/1
+ ip address 192.168.2.1 255.255.255.0
+ duplex auto
+ speed auto
+!
+interface FastEthernet1/0
+ ip address dhcp
+ duplex auto
+ speed auto
+!
+interface FastEthernet2/0
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+!
+ip forward-protocol nd
+!
+ip http server
+no ip http secure-server
+!
+logging 192.168.1.5
+access-list 1 permit 192.168.1.5
+snmp-server engineID local 123456789A
+snmp-server view ViewDefault iso included
+snmp-server community cisco RO
+snmp-server community ciscorw RW
+snmp-server contact jerome.arn@heig-vd.ch
+snmp-server enable traps snmp authentication linkdown linkup coldstart warmstart
+snmp-server enable traps vrrp
+snmp-server enable traps ds1
+snmp-server enable traps tty
+snmp-server enable traps eigrp
+snmp-server enable traps xgcp
+snmp-server enable traps flash insertion removal
+snmp-server enable traps ds3
+snmp-server enable traps envmon
+snmp-server enable traps icsudsu
+snmp-server enable traps isdn call-information
+snmp-server enable traps isdn layer2
+snmp-server enable traps isdn chan-not-avail
+snmp-server enable traps isdn ietf
+snmp-server enable traps ds0-busyout
+snmp-server enable traps ds1-loopback
+snmp-server enable traps atm subif
+snmp-server enable traps cnpd
+snmp-server enable traps config-copy
+snmp-server enable traps config
+snmp-server enable traps dial
+snmp-server enable traps dsp card-status
+snmp-server enable traps entity
+snmp-server enable traps event-manager
+snmp-server enable traps frame-relay
+snmp-server enable traps frame-relay subif
+snmp-server enable traps hsrp
+snmp-server enable traps ipmobile
+snmp-server enable traps ipmulticast
+snmp-server enable traps msdp
+snmp-server enable traps mvpn
+snmp-server enable traps ospf state-change
+snmp-server enable traps ospf errors
+snmp-server enable traps ospf retransmit
+snmp-server enable traps ospf lsa
+snmp-server enable traps ospf cisco-specific state-change nssa-trans-change
+snmp-server enable traps ospf cisco-specific state-change shamlink interface-old
+snmp-server enable traps ospf cisco-specific state-change shamlink neighbor
+snmp-server enable traps ospf cisco-specific errors
+snmp-server enable traps ospf cisco-specific retransmit
+snmp-server enable traps ospf cisco-specific lsa
+snmp-server enable traps pim neighbor-change rp-mapping-change invalid-pim-message
+snmp-server enable traps pppoe
+snmp-server enable traps cpu threshold
+snmp-server enable traps rsvp
+snmp-server enable traps rtr
+snmp-server enable traps syslog
+snmp-server enable traps l2tun session
+snmp-server enable traps vtp
+snmp-server enable traps voice poor-qov
+snmp-server enable traps voice fallback
+snmp-server enable traps dnis
+snmp-server host 192.168.1.5 version 2c public 
+!
+!
+!
+control-plane
+!
+!
+!
+!
+!
+!
+!
+!
+line con 0
+line aux 0
+line vty 0 4
+ login
+!
+ntp clock-period 17179880
+ntp master 7
+ntp server 46.165.252.57
+ntp server 84.16.73.33
+ntp server 5.148.175.134
+ntp server 192.168.232.2
+!
+end
